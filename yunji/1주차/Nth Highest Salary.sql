@@ -9,3 +9,4 @@ SELECT salary FROM (
     ORDER BY num) A
     WHERE num = N 
     LIMIT 1;
+    
