@@ -2,10 +2,6 @@ def build_frame_solution(n, build_frame):
     return solution_brute_force(n, build_frame)
 
 def build_cond(curr):
-    ## 기둥은 바닥 위에 있거나 보의 한쪽 끝 부분 위에 있거나, 또는 다른 기둥 위에 있어야 합니다.
-    ## 벽면을 벗어나게 기둥, 보를 설치하는 경우는 없습니다.
-    ## 보는 한쪽 끝 부분이 기둥 위에 있거나, 또는 양쪽 끝 부분이 다른 보와 동시에 연결되어 있어야 합니다.
-    ## 바닥에 보를 설치 하는 경우는 없습니다.
     def check_cond(elem):
         x, y, a = elem
         if a == 0: # 기둥
