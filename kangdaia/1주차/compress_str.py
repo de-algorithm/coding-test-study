@@ -5,6 +5,7 @@ def compress_str_solution(s):
     while unit < N //2 + 1:
         visited = ["" for _ in range(N)]
         curr = 0
+        # 유닛 단위 만큼 문자열 잘라서 리스트
         split_s = [s[x:x+unit] for x in range(0, N, unit)]
         for i, each in enumerate(split_s):
             if len(visited[curr]) == 0 or split_s[curr] != split_s[i]:
