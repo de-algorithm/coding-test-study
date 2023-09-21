@@ -12,6 +12,9 @@
 
 ### 스택 풀이
 
+![DFS](https://github.com/de-algorithm/coding-test-study/assets/64563859/5e45ea5a-3d47-4695-94a9-7337bff21a58)
+이미지 출처 : https://velog.io/@himinhee/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-DFS%EA%B9%8A%EC%9D%B4-%EC%9A%B0%EC%84%A0-%ED%83%90%EC%83%89-BFS%EB%84%88%EB%B9%84-%EC%9A%B0%EC%84%A0-%ED%83%90%EC%83%89
+
 ```python
 def dfs(start_v):
 visited =[]
@@ -61,3 +64,6 @@ def bfs(start_v):
                 deq.append(w)
     return visited
 ```
+
+![img](https://github.com/de-algorithm/coding-test-study/assets/64563859/1a16e855-7e81-47a9-8a3a-ffaade377d70)
+이미지 출처 : https://iq.opengenus.org/dfs-vs-bfs/
