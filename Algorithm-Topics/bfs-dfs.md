@@ -12,8 +12,6 @@
 
 ### 스택 풀이
 
-!https://images.velog.io/images/himinhee/post/6a5f8969-1d9f-4df3-a5ba-33f8fa5e3ca4/DFS.gif
-
 ```python
 def dfs(start_v):
 visited =[]
@@ -63,5 +61,3 @@ def bfs(start_v):
                 deq.append(w)
     return visited
 ```
-
-https://blog.kakaocdn.net/dn/qicR0/btrwonCX7Es/DjhgPyZMpMAk5C8ZZQDUO1/img.gif
