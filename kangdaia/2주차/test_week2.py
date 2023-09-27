@@ -52,6 +52,14 @@ class Week2(TestCase):
             [54, -24]
         )
 
+    def test_sequence_op_4(self):
+        self.assertEqual(
+            sequence_add_operator(
+                5, [100, 100, 100, 100, 10], [0, 0, 4, 0]
+            ),
+            [1e9, 1e9]
+        )
+
 
 if __name__ == '__main__':
     main()
