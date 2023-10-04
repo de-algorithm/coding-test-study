@@ -1,8 +1,8 @@
 def compress_str_solution(s):
-    N = len(s) # 문자열의 길이
+    N = len(s)  # 문자열의 길이
     candidate = []
     unit = 1
-    while unit < N //2 + 1:
+    while unit < N // 2 + 1:
         visited = ["" for _ in range(N)]
         curr = 0
         # 유닛 단위 만큼 문자열 잘라서 리스트
