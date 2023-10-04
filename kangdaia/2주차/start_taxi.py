@@ -23,14 +23,15 @@ def find_dist(curr, end, board):
             dist_cand.append(dist)
             return 0
         curr_row, curr_col = curr
-        if board[curr_row-2][curr_col-1] == 0:  # top
-            dist_calc([curr_row-2, curr_col-1], end, dist+1)
-        if board[curr_row][curr_col-1] == 0:  # bottom
-            dist_calc([curr_row, curr_col-1], end, dist+1)
-        if board[curr_row-1][curr_col-2] == 0:  # left
-            dist_calc([curr_row-1, curr_col-2], end, dist+1)
-        if board[curr_row-1][curr_col] == 0:  # right
-            dist_calc([curr_row-1, curr_col], end, dist+1)
+        if board[curr_row - 2][curr_col - 1] == 0:  # top
+            dist_calc([curr_row - 2, curr_col - 1], end, dist + 1)
+        if board[curr_row][curr_col - 1] == 0:  # bottom
+            dist_calc([curr_row, curr_col - 1], end, dist + 1)
+        if board[curr_row - 1][curr_col - 2] == 0:  # left
+            dist_calc([curr_row - 1, curr_col - 2], end, dist + 1)
+        if board[curr_row - 1][curr_col] == 0:  # right
+            dist_calc([curr_row - 1, curr_col], end, dist + 1)
+
     dist_calc(curr, end)
     return find_dist
 
@@ -39,7 +40,18 @@ def start_taxi_route(fuel, board, s_coord, passenger_records):
     curr_fuel = fuel
     taxi = s_coord
 
-    record_w_dist = list(map(lambda rec: [rec[0], rec[1], rec[2], rec[3], find_dist(taxi, [rec[0], rec[1]], board)], passenger_records))
+    record_w_dist = list(
+        map(
+            lambda rec: [
+                rec[0],
+                rec[1],
+                rec[2],
+                rec[3],
+                find_dist(taxi, [rec[0], rec[1]], board),
+            ],
+            passenger_records,
+        )
+    )
     while curr_fuel >= 0:
         next_pass_cand = sorted(record_w_dist, key=lambda x: (x[4], x[0], x[1]))
         next_pass = next_pass_cand.pop(0)
@@ -48,6 +60,17 @@ def start_taxi_route(fuel, board, s_coord, passenger_records):
             taxi = [next_pass[2], next_pass[3]]
         else:
             curr_fuel = -1
-        record_w_dist = list(map(lambda rec: [rec[0], rec[1], rec[2], rec[3], find_dist(taxi, [rec[0], rec[1]], board)], next_pass_cand))
-        
+        record_w_dist = list(
+            map(
+                lambda rec: [
+                    rec[0],
+                    rec[1],
+                    rec[2],
+                    rec[3],
+                    find_dist(taxi, [rec[0], rec[1]], board),
+                ],
+                next_pass_cand,
+            )
+        )
+
     return curr_fuel

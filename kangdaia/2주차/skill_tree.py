@@ -26,9 +26,14 @@ def skill_tree(skill, skill_trees):
         skill_dict[skill_ch] = skill_dict.get(skill_ch, i)
 
     for each_skill in skill_trees:
-        skill_lst = list(map(lambda word: skill_dict[word] if word in skill_dict else "", list(each_skill)))
+        skill_lst = list(
+            map(
+                lambda word: skill_dict[word] if word in skill_dict else "",
+                list(each_skill),
+            )
+        )
         skill_lst_nonempty = list(filter(lambda each: each != "", skill_lst))
         if is_consecutive(skill_lst_nonempty):
             answer += 1
-        
+
     return answer

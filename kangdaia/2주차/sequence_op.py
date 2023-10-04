@@ -20,24 +20,20 @@ def sequence_add_operator(n, seq, ops):
 
         if ops[0]:  # 더하기
             seq_ops_helper(
-                calc + seq[idx], idx + 1,
-                [ops[0] - 1, ops[1], ops[2], ops[3]]
+                calc + seq[idx], idx + 1, [ops[0] - 1, ops[1], ops[2], ops[3]]
             )
         if ops[1]:  # 빼기
             seq_ops_helper(
-                calc - seq[idx], idx + 1,
-                [ops[0], ops[1] - 1, ops[2], ops[3]]
+                calc - seq[idx], idx + 1, [ops[0], ops[1] - 1, ops[2], ops[3]]
             )
         if ops[2]:  # 곱하기
             seq_ops_helper(
-                calc * seq[idx], idx + 1,
-                [ops[0], ops[1], ops[2] - 1, ops[3]]
+                calc * seq[idx], idx + 1, [ops[0], ops[1], ops[2] - 1, ops[3]]
             )
         if ops[3]:  # 나누기
             # Python에서 //연산자는 몫보다 작거나 같은 정수를 선택하고, /연산자는 소수 부분을 버리기 때문입니다
             seq_ops_helper(
-                int(calc / seq[idx]), idx + 1,
-                [ops[0], ops[1], ops[2], ops[3] - 1]
+                int(calc / seq[idx]), idx + 1, [ops[0], ops[1], ops[2], ops[3] - 1]
             )
 
     seq_ops_helper(base_elem, 1, ops)
