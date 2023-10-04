@@ -1,11 +1,8 @@
-def skill_tree(skill, skill_trees):
+def skill_tree(skill: str, skill_trees: list[str]) -> int:
     """
-    skill: str, 1 <= len <= 26; 알파벳 대문자
-    skill_trees: [str], 1 <= len <= 20;
+    '스킬트리'
     Skill tress의 각 엘리먼트에 skill 의 알파벳이 순서대로 들어가 되,
     바로 이어질 필요는 x, 모든 알파벳이 들어가지 않아도 되지만 이전 알파벳은 들어가야할 것
-    -> return int (# of avail. skill_trees)
-
     - 필수 스킬트리를 dict 형태로 만듬
         키는 각 char, value는 인덱스
     - skill_trees 루프롤 통해
@@ -15,9 +12,16 @@ def skill_tree(skill, skill_trees):
             - if true, answer += 1
     연속적인 숫자인 경우 만 갯수를 세서 리턴
     time complexity: n^2
+
+    Args:
+        skill (str): 1 <= len <= 26; 알파벳 대문자, 필수 스킬트리
+        skill_trees (list[str]): 1 <= len <= 20; 여러 대문자로 이루어진 스킬트리 목록
+
+    Returns:
+        int: (# of avail. skill_trees)
     """
 
-    def is_consecutive(lst):
+    def is_consecutive(lst: list[str]) -> bool:
         return lst == list(range(len(lst)))
 
     answer = 0
