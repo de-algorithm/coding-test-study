@@ -1,6 +1,7 @@
 from unittest import TestCase, main
 from surveillance_cam import surveillance_camera
 from post_office import min_dist_post_office
+from file_concat import file_concat_sol
 
 
 class Week3(TestCase):
@@ -37,6 +38,20 @@ class Week3(TestCase):
             min_dist_post_office(
                 2, [1, 2], [1, 2]
             ), 2
+        )
+
+    def test_file_concat_1(self):
+        self.assertEqual(
+            file_concat_sol(
+                [40, 30, 30, 50]  
+            ), 300
+        )
+
+    def test_file_concat_2(self):
+        self.assertEqual(
+            file_concat_sol(
+                [1, 21, 3, 4, 5, 35, 5, 4, 3, 5, 98, 21, 14, 17, 32]
+            ), 826
         )
 
 
