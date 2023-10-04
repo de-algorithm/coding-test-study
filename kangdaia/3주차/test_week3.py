@@ -2,6 +2,7 @@ from unittest import TestCase, main
 from surveillance_cam import surveillance_camera
 from post_office import min_dist_post_office
 from file_concat import file_concat_sol
+from milky_way_train import travel_milky_way
 
 
 class Week3(TestCase):
@@ -52,6 +53,13 @@ class Week3(TestCase):
             file_concat_sol(
                 [1, 21, 3, 4, 5, 35, 5, 4, 3, 5, 98, 21, 14, 17, 32]
             ), 826
+        )
+
+    def test_milky_way_train_1(self):
+        self.assertEqual(
+            travel_milky_way(
+                5, ["1 1 1", "1 1 2", "1 2 2", "1 2 3", "3 1"]
+            ), 2
         )
 
 
