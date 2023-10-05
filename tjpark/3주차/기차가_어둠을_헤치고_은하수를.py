@@ -7,6 +7,8 @@
 # 중복된 승객 순서가 있는 기차는 은하수를 건널 수 없다.
 # return: 은하수를 건널 수 있는 기차 수 출력
 
+# 81%에서 계속 실패함
+# 반례를 모르겠음 ㅠㅠ
 import sys
 from collections import deque
 
