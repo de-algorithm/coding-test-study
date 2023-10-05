@@ -10,67 +10,56 @@ passenger_records: [[int, int, int, int]] ; m명의 승객 정보
 태워 이동시 소모한 연료양의 두배를 충전 - 한칸당 1만큼 소모
 이동 도중 연료 바닥나면 실피 -> 업무 끝
 return 남은 연료 량 if all passenger moved, else -1
+
+case 1. 다익스트라 알고리즘 적용하기
 """
+import heapq
 
 
-def find_dist(curr, end, board):
-    dist_cand = []
+def start_taxi_route(fuel: int, board: list[str], taxi: str, passengers: list[str]) -> int:
+    #  init
+    start_row, start_col = list(map(lambda x: int(x)-1, taxi.split()))
+    remain_fuel = fuel
+    min_dist = []
+    heapq.heappush(min_dist, (0, start_col, start_row))
+    arrival_point = None
+    work_done = 0
+    visited = []
+    passenger_dict = dict()
+    for passenger in passengers:
+        travel_info = list(map(lambda x: int(x)-1, passenger.split()))
+        passenger_dict[(travel_info[0], travel_info[1])] = (travel_info[2], travel_info[3])
+    
+    while remain_fuel > -1 and work_done < len(passengers):
+        if min_dist is None:
+            return -1
+        curr = heapq.heappop(min_dist)
+        (curr_dist, curr_col, curr_row) = curr
+        if arrival_point is not None and (curr_row, curr_col) == arrival_point:
+            if remain_fuel - curr_dist < 0:
+                remain_fuel = -1
+                break
+            remain_fuel += curr_dist
+            work_done += 1
+            arrival_point = None
+            curr_dist = 0
+        elif arrival_point is None and (curr_row, curr_col) in passenger_dict and (curr_row, curr_col) not in visited:
+            if remain_fuel - curr_dist < 0:
+                remain_fuel = -1
+                break
+            remain_fuel -= curr_dist
+            arrival_point = passenger_dict[(curr_row, curr_col)]
+            visited.append((curr_row, curr_col))
+            curr_dist = 0
 
-    def dist_calc(curr, end, dist=0):  # [6, 5]
-        if curr[0] == len(board) or curr[1] == len(board) or curr[0] < 0 or curr[1] < 0:
-            return 0
-        if curr[0] == end[0] and curr[1] == end[1]:
-            dist_cand.append(dist)
-            return 0
-        curr_row, curr_col = curr
-        if board[curr_row - 2][curr_col - 1] == 0:  # top
-            dist_calc([curr_row - 2, curr_col - 1], end, dist + 1)
-        if board[curr_row][curr_col - 1] == 0:  # bottom
-            dist_calc([curr_row, curr_col - 1], end, dist + 1)
-        if board[curr_row - 1][curr_col - 2] == 0:  # left
-            dist_calc([curr_row - 1, curr_col - 2], end, dist + 1)
-        if board[curr_row - 1][curr_col] == 0:  # right
-            dist_calc([curr_row - 1, curr_col], end, dist + 1)
+        if remain_fuel - curr_dist > 0:
+            left = board[curr_row].split()[curr_col-1] if curr_col-1 >= 0 else "1"
+            heapq.heappush(min_dist, (1+curr_dist, curr_col-1, curr_row)) if left != "1" else 0
+            right = board[curr_row].split()[curr_col+1] if curr_col+1 < len(board) else "1"
+            heapq.heappush(min_dist, (1+curr_dist, curr_col+1, curr_row)) if right != "1" else 0
+            top = board[curr_row-1].split()[curr_col] if curr_row-1 >= 0 else "1"
+            heapq.heappush(min_dist, (1+curr_dist, curr_col, curr_row-1)) if top != "1" else 0
+            bottom = board[curr_row+1].split()[curr_col] if curr_row+1 < len(board) else "1"
+            heapq.heappush(min_dist, (1+curr_dist, curr_col, curr_row+1)) if bottom != "1" else 0
 
-    dist_calc(curr, end)
-    return find_dist
-
-
-def start_taxi_route(fuel, board, s_coord, passenger_records):
-    curr_fuel = fuel
-    taxi = s_coord
-
-    record_w_dist = list(
-        map(
-            lambda rec: [
-                rec[0],
-                rec[1],
-                rec[2],
-                rec[3],
-                find_dist(taxi, [rec[0], rec[1]], board),
-            ],
-            passenger_records,
-        )
-    )
-    while curr_fuel >= 0:
-        next_pass_cand = sorted(record_w_dist, key=lambda x: (x[4], x[0], x[1]))
-        next_pass = next_pass_cand.pop(0)
-        if next_pass[4] <= curr_fuel:
-            curr_fuel += next_pass[4]
-            taxi = [next_pass[2], next_pass[3]]
-        else:
-            curr_fuel = -1
-        record_w_dist = list(
-            map(
-                lambda rec: [
-                    rec[0],
-                    rec[1],
-                    rec[2],
-                    rec[3],
-                    find_dist(taxi, [rec[0], rec[1]], board),
-                ],
-                next_pass_cand,
-            )
-        )
-
-    return curr_fuel
+    return remain_fuel
