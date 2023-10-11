@@ -8,7 +8,7 @@ def fall_picnic(stones: list[int], k: int) -> int:
     Returns:
         int: 징검다리를 건널 수 있는 최대 인원
     """
-    i, j = min(stones), max(stones)  # 0, 4
+    i, j = min(stones), max(stones)
     answer = 0
     if i == j:
         return i
@@ -30,4 +30,3 @@ def fall_picnic(stones: list[int], k: int) -> int:
             answer = max(mid, answer)
             j = mid-1
     return answer
-

@@ -2,6 +2,7 @@ from unittest import TestCase, main
 from cache import cache_loadtime
 from card_purchase import ps_card_collector
 from stepping_stone import fall_picnic
+from tree_cutting import wood_cutter
 
 
 class Cache(TestCase):
@@ -117,6 +118,31 @@ class Cache(TestCase):
     def test_stepping_stone_3(self):
         self.assertEqual(
             fall_picnic([5], 3), 5
+        )
+
+    def test_tree_cutting_1(self):
+        self.assertEqual(
+            wood_cutter(7, "20 15 10 17"), 15
+        )
+
+    def test_tree_cutting_2(self):
+        self.assertEqual(
+            wood_cutter(20, "4 42 40 26 46"), 36
+        )
+
+    def test_tree_cutting_3(self):
+        self.assertEqual(
+            wood_cutter(1, "1 3 3 10"), 9
+        )
+    
+    def test_tree_cutting_4(self):
+        self.assertEqual(
+            wood_cutter(17, "1 3 3 10"), 0
+        )
+
+    def test_tree_cutting_5(self):
+        self.assertEqual(
+            wood_cutter(1, "1"), 0
         )
 
 if __name__ == "__main__":
