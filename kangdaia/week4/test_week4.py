@@ -1,6 +1,7 @@
 from unittest import TestCase, main
 from cache import cache_loadtime
 from card_purchase import ps_card_collector
+from stepping_stone import fall_picnic
 
 
 class Cache(TestCase):
@@ -101,6 +102,21 @@ class Cache(TestCase):
     def test_card_purchase_7(self):
         self.assertEqual(
             ps_card_collector(5, "1 9 18 25 1"), 27
+        )
+
+    def test_stepping_stone_1(self):
+        self.assertEqual(
+            fall_picnic([2, 4, 5, 3, 2, 1, 4, 2, 5, 1], 3), 3
+        )
+
+    def test_stepping_stone_2(self):
+        self.assertEqual(
+            fall_picnic([7, 2, 8, 7, 2, 5, 9], 3), 7
+        )
+
+    def test_stepping_stone_3(self):
+        self.assertEqual(
+            fall_picnic([5], 3), 5
         )
 
 if __name__ == "__main__":
