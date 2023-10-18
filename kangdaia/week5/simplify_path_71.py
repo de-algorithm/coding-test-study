@@ -5,8 +5,8 @@ def canonical_path(path: str) -> str:
     - path starts with a single slash
     - any two directories are separated by a single slash
     - the path does not end with a trailing slash
-    - the path only contains the directories on the path fron the root directory
-        to the target file or directory
+    - the path only contains the directories on the path fron the root
+        directory to the target file or directory
         ex) no period or double period
     " . " ==> Continue;
     " . . " ==> Remove the before directory;
