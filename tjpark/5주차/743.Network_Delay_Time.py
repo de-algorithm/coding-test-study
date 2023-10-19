@@ -33,9 +33,6 @@ class Solution:
                 if total_time < time_needed[nei-1]:
                 # 힙큐로 정렬했기 때문에 최소 시간을 보장하므로 추가적인 계산 필요없음
                 # 예를 들어 1의 이웃된 노드 2와 3이 있을 때, 3으로 갈 경우 4초가 소요됨 하지만 노드1->노드2->노드3 가는길이 3초가 소요되면 굳이 노드1->노드3 4초로 가는길을 계산하지 않아도 됨
-                
-                # so if we added this check, then we will miss the optimal solution. 
-                # if nei not in visited:
                     time_needed[nei-1] = total_time
                     visited.add(nei)
                     heappush(heap, [total_time, nei])
@@ -94,3 +91,4 @@ class Solution:
         else:
             return max_time 
         '''
+
