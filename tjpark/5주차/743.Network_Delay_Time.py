@@ -7,12 +7,43 @@
 # 그러려면 딕셔너리로 연결된 노드들을 저장하고, 엣지에 도달하는 최소시간을 비교해 넣기
 # {Node_n :{node_n:time, }}
 
-# 48번 케이스 타임초과 ㅠ
-# 왜 뜨는지 모르겠음
+
 from collections import deque
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        
+        # 다익스트라 알고리즘
+        graph = collections.defaultdict(list)
+        # 그래프 방향과 시간 추가
+        for u, v, time in times:
+            graph[u].append([v, time])
+        
+        time_needed = [float('inf')] * n
+        time_needed[k-1] = 0
+        heap = [[0, k]] # 초기 heap 설정
 
+        visited = set() # 방문한 노드 기록 용
+        visited.add(k)
+
+        while heap: 
+            time, cur_node = heappop(heap)
+            # 이웃 노드에 이동 시 걸리는 시간 비교
+            for nei, nei_time in graph[cur_node]:
+                total_time = time + nei_time
+                if total_time < time_needed[nei-1]:
+                # 힙큐로 정렬했기 때문에 최소 시간을 보장하므로 추가적인 계산 필요없음
+                # 예를 들어 1의 이웃된 노드 2와 3이 있을 때, 3으로 갈 경우 4초가 소요됨 하지만 노드1->노드2->노드3 가는길이 3초가 소요되면 굳이 노드1->노드3 4초로 가는길을 계산하지 않아도 됨
+                
+                # so if we added this check, then we will miss the optimal solution. 
+                # if nei not in visited:
+                    time_needed[nei-1] = total_time
+                    visited.add(nei)
+                    heappush(heap, [total_time, nei])
+
+        return max(time_needed) if len(visited) == n else -1
+
+        '''
+        # que 풀이 48번 케이스 타임초과
         node_dic = dict()
         time_dic = { i+1:6001 for i in range(n)}
         time_dic[k] = 0
@@ -32,6 +63,7 @@ class Solution:
         else:
             for n, t in list(node_dic[k].items()):
                 que.append([k,n,t])
+        #print(que)
 
         # 1. k부터 시작해 k안에 있는 사전 순회
         # 2. 순회하면서 엣지에 도달하는 최소 시간 계산하며 dic에 저장
@@ -61,5 +93,4 @@ class Solution:
             return -1
         else:
             return max_time 
-
-
+        '''
