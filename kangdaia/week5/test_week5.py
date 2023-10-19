@@ -1,11 +1,11 @@
 from unittest import TestCase, main
-#  from compress import lzw_zip
+from compress import lzw_zip
 from simplify_path_71 import canonical_path
 from network_delay_time import min_time_cost
 
 
 class Cache(TestCase):
-    """
+
     def test_compress_1(self):
         self.assertEqual(
             lzw_zip("KAKAO"), [11, 1, 27, 15]
@@ -21,7 +21,7 @@ class Cache(TestCase):
             lzw_zip("TOBEORNOTTOBEORTOBEORNOT"), 
             [20, 15, 2, 5, 15, 18, 14, 15, 20, 27, 29, 31, 36, 30, 32, 34]
         )
-    """
+
     def test_simplify_path_1(self):
         self.assertEqual(
             canonical_path("/home/"),
@@ -90,8 +90,8 @@ class Cache(TestCase):
 
     def test_network_delay_4(self):
         self.assertEqual(
-            min_time_cost([[1, 2, 1], [2, 1, 3]], 2, 2),
-            3
+            min_time_cost([[1, 2, 1], [2, 3, 2], [1, 3, 2]], 3, 1),
+            2
         )
 
     def test_network_delay_5(self):
