@@ -1,5 +1,7 @@
 def fall_picnic(stones: list[int], k: int) -> int:
-    """_summary_
+    """
+    중간값보다 작은 발판 수가 연속되는 횟수를 카운트해서 그 리스트의 최대값을 체크
+    최대값을 k랑 비교
 
     Args:
         stones (list[int]): 밟을 수 있는 횟수가 포함된 징검다리 배열

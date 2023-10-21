@@ -18,24 +18,18 @@ def min_time_cost(times: list[list[int]], n: int, k: int) -> int:
         val = node_dict.get(time[0], dict())
         val[time[1]] = time[2]
         node_dict[time[0]] = val
-    queue = [(0, 0, k)]
+    queue = [(0, k)]
     heapq.heapify(queue)
-    visited = []
-    path = [-1 for _ in range(n)]
-    #def traverse_graph(node, time=0, lv=0):
-    #    if node not in visited:
-    #        visited.append(node)
-    #        neighbors = node_dict.get(node, dict())
-    #        print(lv, node, neighbors)
-    #        for k, v in neighbors.items():
-                #traverse_graph(k, time+v, lv+1)
-    #traverse_graph(k)
+    path = [float('inf') for _ in range(n)]
+    path[k-1] = 0
+
     while queue:
-        (lv, weight, node) = heapq.heappop(queue)
-        if node not in visited:
-            visited.append(node)
+        (dist, node) = heapq.heappop(queue)
+        path[node-1] = min(path[node-1], dist)
+        if path[node-1] >= dist:
             neighbors = node_dict.get(node, dict())
             for key, val in neighbors.items():
-                heapq.heappush(queue, (lv+1, val, key))
-        print(node, queue)
-    return weight
+                if val+dist < path[key-1]:
+                    path[key-1] = val+dist
+                    heapq.heappush(queue, (val+dist, key))
+    return -1 if float('inf') in path else max(path)
