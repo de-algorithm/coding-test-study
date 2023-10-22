@@ -1,4 +1,6 @@
 import heapq
+
+
 def min_time_cost(times: list[list[int]], n: int, k: int) -> int:
     """
     for given times, n, and k,
