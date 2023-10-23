@@ -2,18 +2,25 @@ def puzzle_solver(n: int) -> list[list[int]]:
     """하노이의 탑
     한번에 하나의 원판만 옮길 수 있고 큰 원판이 작은 원판 위에 있어서는 안될 때,
     최소의 움직임으로 n개의 원판을 1번 기둥에서 3번 기둥으로 옮기는 방법을 찾는다.
-    1. 처음 원판을 옮길 때 원판의 개수가 홀수라면 목표 기둥의 반대 기둥(2번 기둥), 짝수라면 목표 기둥(3번 기둥) 으로 옮겨야 한다.
-    2. 원판을 옮겼을 때 그 다음 행동은 원판이 옮겨진 기둥을 제외한 행동이다. ex) 1에서 3으로 옮겼으면 1번 기둥이나 2번 기둥에서 옮겨야 한다.
-    3. 원판을 옮길 때 이전에 위치한 기둥이 아닌 다른 기둥으로 옮겨야 한다. ex) 1에서 3으로 옮긴 원판은 다음에 옮길 땐 2번 기둥으로 옮겨야 한다.
-
+    n개의 원판을 옮기기 위해서는 n-1개의 원판을 중간 기둥까지 옮겨야 하고 (재귀),
+    1번 기둥에서 3번 기둥으로 n번째 원판을 옮긴다.
+    다시 중간 기둥에 위치한 n-1개의 원판을 3번 기둥으로 옮기면 (재귀),
+    n개의 원판을 옮기는 데 성공한다.
     Args:
         n (int): 1번 기둥에 있는 원판의 갯수
 
     Returns:
         list[list[int]]: n개의 원판을 최소로 3번 원판으로 옮기는 방법
     """
-    # 4 -> [1, 2] [1, 3] [2, 3] [3, 1], [3, 2] [1, 2] [1, 3], [2, 3] [2, 1] [3, 1] [2, 3] [1, 2] [1, 3] [2, 3]
-    hanoi = [[] for _ in range(3)]
-    hanoi[0] = [i for i in range(n)][::-1]
+    methods = []
 
-    return [[]]
+    def recurse_move(tower_n, curr, end):
+        next_pos = 6 - end - curr
+        if tower_n == 1:
+            methods.append([curr, end])
+        else:
+            recurse_move(tower_n-1, curr, next_pos)
+            methods.append([curr, end])
+            recurse_move(tower_n-1, next_pos, end)
+    recurse_move(n, 1, 3)
+    return methods
