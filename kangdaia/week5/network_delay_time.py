@@ -1,4 +1,6 @@
 import heapq
+
+
 def min_time_cost(times: list[list[int]], n: int, k: int) -> int:
     """
     for given times, n, and k,
@@ -11,7 +13,7 @@ def min_time_cost(times: list[list[int]], n: int, k: int) -> int:
 
     Returns:
         int: minimum times take to travel all nodes.
-             return -1 if cannot visit all nodes.
+            return -1 if cannot visit all nodes.
     """
     node_dict = dict()
     for time in times:

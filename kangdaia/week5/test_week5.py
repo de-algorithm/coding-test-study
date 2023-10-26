@@ -2,6 +2,7 @@ from unittest import TestCase, main
 from compress import lzw_zip
 from simplify_path_71 import canonical_path
 from network_delay_time import min_time_cost
+from sheep_n_wolf import survive
 
 
 class Cache(TestCase):
@@ -98,6 +99,18 @@ class Cache(TestCase):
         self.assertEqual(
             min_time_cost([[1, 2, 1], [2, 3, 7], [1, 3, 4], [2, 1, 2]], 4, 1),
             -1
+        )
+
+    def test_sheep_n_wolf_1(self):
+        self.assertEqual(
+            survive([0,0,1,1,1,0,1,0,1,0,1,1], [[0,1],[1,2],[1,4],[0,8],[8,7],[9,10],[9,11],[4,3],[6,5],[4,6],[8,9]]),
+            5
+        )
+
+    def test_sheep_n_wolf_2(self):
+        self.assertEqual(
+            survive([0,1,0,1,1,0,1,0,0,1,0], 	[[0,1],[0,2],[1,3],[1,4],[2,5],[2,6],[3,7],[4,8],[6,9],[9,10]]),
+            5
         )
 
 
