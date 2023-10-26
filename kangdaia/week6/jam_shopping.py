@@ -1,6 +1,7 @@
 def shortest_dist(gems: list[str]) -> list[int]:
     """
     진열된 모든 종류의 보석을 적어도 1개이상 포함하는 가장 짧은 구간을 찾아서 구매한다.
+    비교 조건: 탐색하면서 dict에 값을 추가한디. 그리고 dict key list lenght를 보석의 갯수와 비교한다.
 
     Args:
         gems (list[str]): 1번 진열대부터 진열대 번호 순서대로 나열된 보석 목록
