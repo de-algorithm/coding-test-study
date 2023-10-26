@@ -8,15 +8,23 @@ def shortest_dist(gems: list[str]) -> list[int]:
     Returns:
         list[int]: 가장 짧은 구간의 시작 진열대 번호와 끝 진열대 번호를 목록으로 반환
     """
-    gem_kinds = set(gems)
-
-    idx_range = []
-    gem_count = set()
-
+    gem_counts = {gems[0]: 1}
+    gem_size = len(set(gems))
     i = j = 0
-
-    while j < len(gems):
-        search = gems[i:j+1]
-        if len(search) < len(gem_kinds):
+    smallest = [0, len(gems)]
+    while i < len(gems) and j < len(gems):
+        if len(gem_counts) < gem_size:
             j += 1
-    return [i, j]
+            if j == len(gems):
+                break
+            gem_counts[gems[j]] = gem_counts.get(gems[j], 0) + 1
+        else:
+            if j-i < smallest[1]-smallest[0]:
+                smallest = [i+1, j+1]
+            else:
+                gem_counts[gems[i]] -= 1
+                if gem_counts[gems[i]] == 0:
+                    del gem_counts[gems[i]]    # count가 0이 되면 key가 없어야하므로 반드시 del
+                i += 1
+
+    return smallest
