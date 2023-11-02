@@ -1,6 +1,7 @@
 from unittest import TestCase, main
 from best_album import most_played_song
 from AB import query_executor
+from robot_cleaner import cleaning_area
 
 
 class Cache(TestCase):
@@ -19,7 +20,13 @@ class Cache(TestCase):
                 "add B b",
                 "add B ab",
                 "find abab"
-            ]), 10
+            ]), [10]
+        )
+    def test_robot_cleaner_1(self):
+        self.assertEqual(
+            cleaning_area(
+                [1, 1, 0], [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+            ), 1
         )
 
 

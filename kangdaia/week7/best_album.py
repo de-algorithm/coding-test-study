@@ -41,6 +41,5 @@ def most_played_song(genres: list[str], plays: list[int]) -> list[int]:
         song_most_plays = sorted(song_plays.items(), key= lambda x: (-x[1], x[0]))
         song_idx = list(map(lambda x: x[0], song_most_plays))
         result = result + song_idx[:2]
-        print(song_most_plays)
 
     return result
