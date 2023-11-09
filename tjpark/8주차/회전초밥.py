@@ -11,7 +11,6 @@ import sys
 from collections import defaultdict
 
 sys_input = sys.stdin.readline
-
 N, d, k, c = map(int,sys_input().split())
 
 # 초밥 count용 dict
