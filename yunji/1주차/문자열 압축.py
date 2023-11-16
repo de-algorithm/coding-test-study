@@ -18,8 +18,7 @@ def solution(s):
             curr_ch = s[j:j+i]
             if curr_ch == prev_ch[0]:      # 이전 단위 문자열과 현재 단위 문자열이 동일하다면
                 prev_ch[1] += 1           # 이전 동일한 문자열의 개수 체크 
-                # if prev_ch[1] == 2:          # 이전 동일한 문자열이 1개였다면 
-                #     count += len(str(prev_ch[1]))             # 숫자 길이 추가 
+
                 if j+i >= len(s): # 마지막 단위 문자일 때 
                     count += len(str(prev_ch[1])) 
             else:
