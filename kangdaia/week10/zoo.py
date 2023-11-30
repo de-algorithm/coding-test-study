@@ -22,7 +22,7 @@ def locate_lion(size: int) -> int:
     Returns:
         int: method to locate lions remains by division of 9901
     """
-    dp = [[0, 0, 0] for _ in range(size)]
+    dp = [0 for _ in range(size)]
     dp[0] = 3
     dp[1] = 3+2+2
     for row_num in range(2, size):
