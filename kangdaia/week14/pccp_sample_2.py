@@ -1,4 +1,6 @@
 from itertools import groupby
+
+
 def solution(land: list[list[int]]) -> int:
     """
     각 row 별 연속적인 칸의 갯수와 col 기록
@@ -25,20 +27,25 @@ def solution(land: list[list[int]]) -> int:
         visited[m_row][m_col] = True
         oil_cluster_ids[m_row][m_col] = cluster_id
         size = 1
-        
+
         for dx, dy in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
             move_row, move_col = m_row + dx, m_col + dy
-            if 0 <= move_row < n and 0 <= move_col < m and not visited[move_row][move_col] and land[move_row][move_col] == 1:
+            if (
+                0 <= move_row < n
+                and 0 <= move_col < m
+                and not visited[move_row][move_col]
+                and land[move_row][move_col] == 1
+            ):
                 size += get_compound(move_row, move_col, cluster_id)
         return size
-    
+
     for i in range(n):
         for j in range(m):
             if land[i][j] == 1 and not visited[i][j]:
                 cluster_size = get_compound(i, j, cluster_id)
                 cluster_sizes.append(cluster_size)
                 cluster_id += 1
-    
+
     max_oil = 0
     for j in range(m):
         oil_in_column = 0

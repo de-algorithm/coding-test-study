@@ -1,5 +1,3 @@
-# 붕대감기
-
 def solution(bandage: list[int], health: int, attacks: list[list[int]]) -> int:
     """
     붕대감기
@@ -22,13 +20,16 @@ def solution(bandage: list[int], health: int, attacks: list[list[int]]) -> int:
     """
     bandage_time, recover_per_sec, extra_recover = bandage
     curr_health = health
-    last_attack = 0 # 마지막으로 연속 취소된 시간
+    last_attack = 0  # 마지막으로 연속 취소된 시간
     for attack_time, health_lost in attacks:
         # 공격 받기 전 회복
         prev_success_time = attack_time - last_attack - 1
         if prev_success_time > 0:
             total_extra_health = prev_success_time // bandage_time * extra_recover
-            curr_health = min(health, curr_health+total_extra_health+recover_per_sec*prev_success_time)
+            curr_health = min(
+                health,
+                curr_health + total_extra_health + recover_per_sec * prev_success_time,
+            )
         # 공격 후
         last_attack = attack_time
         curr_health -= health_lost
