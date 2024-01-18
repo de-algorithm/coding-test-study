@@ -49,7 +49,7 @@ def village_order(N: int, road: list[list[int]], K: int) -> int:
             if new_w < dist[next_nd]:
                 dist[next_nd] = new_w
                 heappush(heap, (new_w, next_nd))
-                
+
     cnt_village = 0
     for d in dist:
         if d <= K:

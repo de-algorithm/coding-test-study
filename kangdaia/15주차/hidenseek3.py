@@ -30,7 +30,7 @@ def find_sibling(N: int, K: int) -> int:
 
         if dist[node] < t or node < 0 or node > 100000:
             continue
-        
+
         neighbors = [[t+1, node-1], [t+1, node+1], [t, node*2]]
         for next_t, next_node in neighbors:
             if next_t < dist[next_node] and 0 <= next_node <= 100000:
