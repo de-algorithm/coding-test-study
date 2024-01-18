@@ -1,4 +1,4 @@
-from 기둥과_보_설치 import solution
+from 문자열_압축 import solution
 from unittest import TestCase, main
 class Cache(TestCase):
 
