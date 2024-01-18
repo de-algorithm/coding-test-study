@@ -21,12 +21,12 @@ def village_order(N: int, road: list[list[int]], K: int) -> int:
     6. 계산한 dist 값에서 가충치가 K값 이하인 경우를 count
 
     Args:
-        N (int): _description_
-        road (list[list[int]]): _description_
-        K (int): _description_
+        N (int): 노드의 갯수
+        road (list[list[int]]): 노드가 연결되어 있는 정보와 가중치
+        K (int): 가중치의 최대값
 
     Returns:
-        int: _description_
+        int: 가중치의 최대값을 넘지 않는 노드의 갯수
     """
     graph = [[float("inf") for _ in range(N+1)] for _ in range(N+1)]
     for start_n, end_n, w in road:
