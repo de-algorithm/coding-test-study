@@ -3,6 +3,7 @@ Date        : 2023.09.21
 Problem     : https://school.programmers.co.kr/learn/courses/30/lessons/60061
 Tag         : 구현
 '''
+
 def solution(n, build_frame):
     answer = []
     
@@ -21,7 +22,7 @@ def solution(n, build_frame):
             if check(answer):       # 설치 가능한지 판단
                 continue
             answer.remove([x,y,a])
-        
+            
     return sorted(answer)
 
 # 기둥과 보의 설치 가능 여부
