@@ -1,4 +1,6 @@
-from coding-test-study.week1.기둥과_보_설치 import solution
+import sys
+sys.path.append('../../')
+from week1.기둥과_보_설치 import solution
 from unittest import TestCase, main
 
 
