@@ -1,4 +1,4 @@
-from '1주차/문자열_압축' import solution
+from week1/문자열_압축 import solution
 from unittest import TestCase, main
 
 
