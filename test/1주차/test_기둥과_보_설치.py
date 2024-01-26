@@ -1,4 +1,4 @@
-from '1주차/기둥과_보_설치' import solution
+from week1/기둥과_보_설치 import solution
 from unittest import TestCase, main
 
 
