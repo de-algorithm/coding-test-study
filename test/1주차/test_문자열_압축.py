@@ -8,7 +8,7 @@ solution_dir = os.path.abspath(parent_dir)
 sys.path.insert(0, solution_dir)
 
 
-from week1.문자열_압축 import solution
+from week1.compress_str import solution
 from unittest import TestCase, main
 
 
