@@ -1,4 +1,4 @@
-from week1.문자열_압축 import solution
+from coding-test-study.week1.문자열_압축 import solution
 from unittest import TestCase, main
 
 
