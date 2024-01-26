@@ -8,7 +8,7 @@ solution_dir = os.path.abspath(parent_dir)
 sys.path.insert(0, solution_dir)
 
 
-from week1.기둥과_보_설치 import solution
+from week1.build_frame import solution
 from unittest import TestCase, main
 
 
