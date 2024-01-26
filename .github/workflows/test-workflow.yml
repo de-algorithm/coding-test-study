@@ -22,8 +22,7 @@ jobs:
       with:
         sparse-checkout: |
           '${{ github.actor }}'
-          'test'
-        sparse-checkout-cone-mode: false
+          test
     - name: Move files to root
       run: |
         ls -lah
