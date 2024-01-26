@@ -2,8 +2,8 @@ from '1주차/기둥과_보_설치' import solution
 from unittest import TestCase, main
 
 
-class Cache(TestCase):
-    def test_compress_1(self):
+class Test1(TestCase):
+    def test_solution_1(self):
         self.assertEqual(
             solution(
                 5,
@@ -30,7 +30,7 @@ class Cache(TestCase):
             ],
         )
 
-    def test_compress_2(self):
+    def test_solution_2(self):
         self.assertEqual(
             solution(
                 5,
