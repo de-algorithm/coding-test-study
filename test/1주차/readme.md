@@ -4,7 +4,7 @@
 
 [URL](https://school.programmers.co.kr/learn/courses/30/lessons/60061)
 
-1. 문자열 압축
+2. 문자열 압축
 
 [URL](https://school.programmers.co.kr/learn/courses/30/lessons/60057)
 
