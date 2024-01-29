@@ -1,4 +1,4 @@
-def compress_str_solution(s):
+def solution(s):
     N = len(s)  # 문자열의 길이
     candidate = []
     unit = 1

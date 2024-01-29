@@ -1,12 +1,20 @@
 '''
 Date        : 2023.09.19
+Update      : 2024.01.22
 Problem     : https://school.programmers.co.kr/learn/courses/30/lessons/1844
 Tag         : DFS/BFS
 '''
 
 from collections import deque
 def solution(maps):
-    answer = 0
+    """
+    게임 맵에 대해서 BFS 수행하는 함수
+    Args:
+        maps (list): n x m 크기의 게임 맵의 상태가 들어있는 2차원 배열
+
+    Returns:
+        int: 캐릭터가 상대 팀 진영에 도착하기 위해서 지나가야 하는 칸의 개수의 최솟값
+    """
     n = len(maps)       # 행
     m = len(maps[0])    # 열
     
@@ -19,7 +27,7 @@ def solution(maps):
     q.append((0,0))     # 출발점 (0,0)부터 큐에 삽입 
     visited[0][0] = 1   # 출발점 (0,0)은 방문처리 
     
-    # 상,우,하,좌   
+    # 하,우,상,좌   
     dx = [0,1,0,-1]     
     dy = [1,0,-1,0]
     

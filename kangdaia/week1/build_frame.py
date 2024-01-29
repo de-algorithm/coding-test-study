@@ -1,4 +1,4 @@
-def build_frame_solution(n, build_frame):
+def solution(n, build_frame):
     return solution_brute_force(n, build_frame)
 
 
