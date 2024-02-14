@@ -1,3 +1,6 @@
+/* leetcode
+Human_Traffic_of_Stadium
+*/
 WITH A AS 
 (
   SELECT *, id - row_number() over (order by id) as gap
