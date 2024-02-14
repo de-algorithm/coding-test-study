@@ -8,11 +8,11 @@ solution_dir = os.path.abspath(parent_dir)
 sys.path.insert(0, solution_dir)
 
 
-from week1.build_frame import solution
+from week1.problem1 import solution
 from unittest import TestCase, main
 
 
-class Test1(TestCase):
+class Problem1(TestCase):
     def test_solution_1(self):
         self.assertEqual(
             solution(

@@ -1,4 +1,4 @@
-def build_frame_solution(n, build_frame):
+def solution(n, build_frame):
     return solution_brute_force(n, build_frame)
 
 
@@ -6,11 +6,20 @@ def build_cond(curr):
     def check_cond(elem):
         x, y, a = elem
         if a == 0:  # 기둥
-            return y == 0 or [x, y-1, 0] in curr or [x-1, y, 1] in curr or [x, y, 1] in curr
+            return (
+                y == 0
+                or [x, y - 1, 0] in curr
+                or [x - 1, y, 1] in curr
+                or [x, y, 1] in curr
+            )
         else:  # 보
-            return [x, y-1, 0] in curr or [x+1, y-1, 0] in curr or ([x+1, y, 1] in curr and [x-1, y, 1] in curr)
-    
-    return all(map(lambda elem: check_cond(elem), curr)) 
+            return (
+                [x, y - 1, 0] in curr
+                or [x + 1, y - 1, 0] in curr
+                or ([x + 1, y, 1] in curr and [x - 1, y, 1] in curr)
+            )
+
+    return all(map(lambda elem: check_cond(elem), curr))
 
 
 def solution_brute_force(n, build_frame):
