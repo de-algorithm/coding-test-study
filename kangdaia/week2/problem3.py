@@ -1,8 +1,8 @@
 import heapq
 
 
-def start_taxi_route(fuel: int, board: list[str], taxi: str, passengers: list[str]) -> int:
-    """
+def solution(fuel: int, board: list[str], taxi: str, passengers: list[str]) -> int:
+    """ 백준 스타트 택시
     택시 위치와 여러 승객 정보가 주어졌을 때, 주어진 우선순위를 적용해 모든 승객을 태운 후
     남은 연료 량을 반환하는 프로그램
 

@@ -1,6 +1,6 @@
-def skill_tree(skill: str, skill_trees: list[str]) -> int:
+def solution(skill: str, skill_trees: list[str]) -> int:
     """
-    '스킬트리'
+    프로그래머스 '스킬트리'
     Skill tress의 각 엘리먼트에 skill 의 알파벳이 순서대로 들어가 되,
     바로 이어질 필요는 x, 모든 알파벳이 들어가지 않아도 되지만 이전 알파벳은 들어가야할 것
     - 필수 스킬트리를 dict 형태로 만듬

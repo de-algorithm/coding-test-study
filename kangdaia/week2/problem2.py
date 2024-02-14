@@ -1,4 +1,4 @@
-def sequence_add_operator(n: int, seq: list[int], ops: list[int]) -> list[int]:
+def solution(n: int, seq: list[int], ops: list[int]) -> list[int]:
     """연산자 추가하기
 
     Args:
