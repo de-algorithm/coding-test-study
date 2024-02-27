@@ -1,5 +1,5 @@
 from unittest import TestCase, main
-from 스킬트리 import solution
+from skill_tree import solution
 
 class SolutionTestCase(TestCase):
     def test_solution_1(self):
