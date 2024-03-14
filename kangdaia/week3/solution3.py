@@ -1,4 +1,4 @@
-def surveillance_camera(routes: list[list[int]]) -> int:
+def solution(routes: list[list[int]]) -> int:
     """
     고속도로를 이동하는 모든 차량이 고속도로를 이용하면서 단속용 카메라를 한 번은 만나도록 카메라를 설치하려고 합니다.
     고속도로를 이동하는 차량의 경로 routes가 매개변수로 주어질 때,

@@ -1,4 +1,4 @@
-def min_dist_post_office(n: int, x: list[int], a: list[int]) -> int:
+def solution(n: int, x: list[int], a: list[int]) -> int:
     """수직선과 같은 일직선상에 N개의 마을이 위치해 있을 때, 
     각 사람들까지의 거리의 합이 최소가 되는 위치를 찾는다.
     case 1. 가중 평균 계산 round(sum([x[i]*a[i]for i in range(n)]) / sum(a))

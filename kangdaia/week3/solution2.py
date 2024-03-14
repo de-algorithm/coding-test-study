@@ -1,7 +1,7 @@
 from heapq import heapify, heappop, heappush
 
 
-def file_concat_sol(files: list[int]) -> int:
+def solution(files: list[int]) -> int:
     """
     두 개의 파일을 합쳐서 하나의 임시파일을 만들고 
     계속 두개 씩 합쳐서 최종적으로 하나의 파일을 만든다.

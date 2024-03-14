@@ -1,4 +1,4 @@
-def travel_milky_way(n:int, orders: list[str]) -> int:
+def solution(n:int, orders: list[str]) -> int:
     """
     주어진 명령에 따라 위치 변경 후 중복되지 않는 리스트 갯수 세기
     1&2 -> 1은 해당 위치에 1 부여, 2는 0 부여

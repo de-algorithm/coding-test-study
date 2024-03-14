@@ -1,4 +1,4 @@
-def fall_picnic(stones: list[int], k: int) -> int:
+def solution(stones: list[int], k: int) -> int:
     """
     중간값보다 작은 발판 수가 연속되는 횟수를 카운트해서 그 리스트의 최대값을 체크
     최대값을 k랑 비교
