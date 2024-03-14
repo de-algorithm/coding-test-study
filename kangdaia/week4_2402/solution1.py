@@ -15,6 +15,7 @@ def solution(N: int, M: int, classroom: list[str]):
     
     return bfs_search(start_c, start_r, visit, classroom, target)
 
+
 def bfs_search(x, y, visit, classroom, target):
     queue = deque()
     queue.append([y, x, 0, 4, 0]) # count, direction, time
