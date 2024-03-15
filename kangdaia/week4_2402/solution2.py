@@ -24,3 +24,9 @@ def solution(n: int, s: int, eats: list[int]) -> int:
                     break
         time += 1
     return num+1
+
+n, s = list(map(int,input().split()))
+m = int(input())
+m_lst = []
+for i in range(m):
+    m_lst.append(int(input()))
