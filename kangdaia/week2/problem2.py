@@ -39,3 +39,9 @@ def solution(n: int, seq: list[int], ops: list[int]) -> list[int]:
     seq_ops_helper(base_elem, 1, ops)
     # min 함수의 공식 Documentation을 보면, 둘 이상의 원소가 최소일 때는 그 중 가장 먼저 등장하는 원소를 반환.
     return [max(max(result), -1e9), min(min(result), 1e9)]
+
+n = int(input())
+numbers = list(map(int,input().split()))
+operations = list(map(int,input().split()))
+result = solution(n, numbers, operations)
+print(f'{result[0]}\n{result[1]}')

@@ -2,7 +2,7 @@ from collections import defaultdict
 from heapq import heappop, heappush
 
 
-def visit_party(N: int, M: int, X: int, roads: list[str]) -> int:
+def solution(N: int, M: int, X: int, roads: list[list[int]]) -> int:
     """
     각 노드에서 X까지 도착할 때의 최솟값을 구해서 비교해야 함.
 
@@ -16,11 +16,10 @@ def visit_party(N: int, M: int, X: int, roads: list[str]) -> int:
         int: 각 마을에서 X까지 갔다 올 때 걸리는 최대 시간
     """
     graph = dict()
-    for road in roads:
-        s, e, t = road.split()
-        if int(s) not in graph:
-            graph[int(s)] = defaultdict(lambda: float("inf"))
-        graph[int(s)][int(e)] = int(t)
+    for s, e, t in roads:
+        if s not in graph:
+            graph[s] = defaultdict(lambda: float("inf"))
+        graph[s][e] = t
     
     def find_time_oneway(start):
         visited = defaultdict(lambda: float("inf"))
@@ -49,17 +48,9 @@ def visit_party(N: int, M: int, X: int, roads: list[str]) -> int:
 
     return max_time_roundtrip
 
-
-if __name__ == "__main__":
-    print("========TEST 1=========")
-    line_1 = map(lambda x: int(x), "4 8 2".split())
-    road = ["1 2 4",
-            "1 3 2",
-            "1 4 7",
-            "2 1 1",
-            "2 3 5",
-            "3 1 2",
-            "3 4 4",
-            "4 2 3"]
-    result = visit_party(*line_1, road)
-    print(result, result == 10)
+n, m, x = list(map(int,input().split()))
+times = []
+for _ in range(m):
+    times.append(list(map(int,input().split())))
+result = solution(n, m, x, times)
+print(result)

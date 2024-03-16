@@ -1,4 +1,4 @@
-def solution(n: int, x: list[int], a: list[int]) -> int:
+def solution(n, village):
     """수직선과 같은 일직선상에 N개의 마을이 위치해 있을 때, 
     각 사람들까지의 거리의 합이 최소가 되는 위치를 찾는다.
     case 1. 가중 평균 계산 round(sum([x[i]*a[i]for i in range(n)]) / sum(a))
@@ -12,11 +12,16 @@ def solution(n: int, x: list[int], a: list[int]) -> int:
     Returns:
         int: 각 사람들까지의 거리의 합이 최소가 되는 위치
     """
-    village = list(map(lambda x_i, a_i: [x_i, a_i], x, a))
     village.sort(key=lambda elem: elem[0])  # x의 거리 기준 정렬
-    total_people = sum(a)
+    total_people = sum([a for _, a in village])
     count = 0
     for i in range(n):
         count += village[i][1]
         if count >= total_people / 2:
             return village[i][0]
+
+n = int(input())
+village = []
+for _ in range(n):
+    village.append(list(map(int,input().split())))
+print(solution(n, village))

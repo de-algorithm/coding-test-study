@@ -17,3 +17,10 @@ def solution(timelogs: list[str]) -> int:
                 remain = m + d - 60
             price += (d - remain) * 5 + remain * 10
     return price
+
+n = int(input())
+times = []
+for i in range(n):
+    times.append(input())
+result = solution(times)
+print(result)

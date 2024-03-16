@@ -2,7 +2,7 @@ from collections import defaultdict
 from heapq import heappop, heappush
 
 
-def find_hacked_computer(N: int, D: int, c: int, deps: list[str]) -> tuple[int, int]:
+def solution(N: int, D: int, c: int, deps: list[list[int]]) -> tuple[int, int]:
     """의존성으로 연결되어 시작 컴퓨터부터 연결된 모든 컴퓨터(노드)의 갯수와 마지막 컴퓨터를 찾기까지 시간
     1. 그래프 초기화: "a b s"형태로 되어있는 의존성 리스트를 b -> a = s 가 되도록 바꿈
         - defaultdict 사용
@@ -29,11 +29,10 @@ def find_hacked_computer(N: int, D: int, c: int, deps: list[str]) -> tuple[int, 
         tuple[int, int]: 감염된 컴퓨터 대수와 감염되기까지 전체 시간
     """
     graph = dict()
-    for dep in deps:
-        a, b, s = dep.split()
-        if int(b) not in graph:
-            graph[int(b)] = defaultdict(lambda: float("inf"))
-        graph[int(b)][int(a)] = int(s)
+    for a, b, s in deps:
+        if b not in graph:
+            graph[b] = defaultdict(lambda: float("inf"))
+        graph[b][a] = s
     
     visited = defaultdict(lambda: float("inf"))
     visited[c] = 0
@@ -61,15 +60,10 @@ def find_hacked_computer(N: int, D: int, c: int, deps: list[str]) -> tuple[int, 
             count_comp += 1
     return (count_comp, total_time)
 
-if __name__ == "__main__":
-    print("========TEST 1=========")
-    testN = 2
-    testcase = map(lambda x: int(x), "3 2 2".split())
-    dependency = ["2 1 5", "3 2 5"]
-    result_testcase = find_hacked_computer(*testcase, dependency)
-    print(result_testcase, result_testcase == (2, 5))
-
-    testcase = map(lambda x: int(x), "3 3 1".split())
-    dependency = ["2 1 2", "3 1 8", "3 2 4"]
-    result_testcase = find_hacked_computer(*testcase, dependency)
-    print(result_testcase, result_testcase == (3, 6))
+tests = int(input())
+for _ in range(tests):
+    n, d, c = list(map(int,input().split()))
+    depend = []
+    for _ in range(d):
+        depend.append(list(map(int,input().split())))
+    print(*solution(n, d, c, depend))

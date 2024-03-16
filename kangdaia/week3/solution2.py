@@ -29,3 +29,9 @@ def solution(files: list[int]) -> int:
         answer += file_concat_cost
         heappush(files, file_concat_cost)
     return answer
+
+t = int(input())
+for _ in range(t):
+    k = int(input())
+    file_size = list(map(int,input().split()))
+    print(solution(file_size))

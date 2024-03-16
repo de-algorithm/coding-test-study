@@ -5,8 +5,7 @@ def solution(m, n, k, coords):
     graph = [[1 for j in range(n)] for i in range(m)]
     answer = []
 
-    for coord in coords:
-        x1, y1, x2, y2 = map(int, coord.split())
+    for x1, y1, x2, y2 in coords:
         for _y in range(y1, y2):
             for _x in range(x1, x2):
                 graph[_y][_x] = 0
@@ -35,3 +34,11 @@ def bfs_search(s_x, s_y, n, m):
                 count += 1
                 queue.append((n_x, n_y))
     return count
+
+m, n, k = list(map(int,input().split()))
+coordinates = []
+for _ in range(k):
+    coordinates.append(list(map(int,input().split())))
+result = solution(m, n, k, coordinates)
+print(len(result))
+print(*result)

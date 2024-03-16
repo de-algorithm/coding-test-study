@@ -2,7 +2,7 @@ from heapq import heappop, heappush
 from collections import defaultdict
 
 
-def find_sibling(N: int, K: int) -> int:
+def solution(N: int, K: int) -> int:
     """
     조건:
     - 현위치 x에서 x-1 혹은 x+1로 이동가능, 이동시간은 1초 (가중치)
@@ -39,23 +39,5 @@ def find_sibling(N: int, K: int) -> int:
 
     return result
 
-
-if __name__ == "__main__":
-    print("=========TEST 1=========")
-    test = find_sibling(5, 17)
-    print(test, test == 2)
-    print("=========TEST 2=========")
-    test = find_sibling(0, 0)
-    print(test, test == 0)
-    print("=========TEST 3=========")
-    test = find_sibling(2, 7)
-    print(test, test == 1)
-    print("=========TEST 4=========")
-    test = find_sibling(1, 17)
-    print(test, test == 1)
-    print("=========TEST 5=========")
-    test = find_sibling(1, 32)
-    print(test, test == 0)
-    print("=========TEST 6=========")
-    test = find_sibling(1, 10000)
-    print(test, test == 3)
+n, k = list(map(int,input().split()))
+print(solution(n, k))

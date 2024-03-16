@@ -1,4 +1,4 @@
-def solution(n:int, orders: list[str]) -> int:
+def solution(n:int, orders: list[list[int]]) -> int:
     """
     주어진 명령에 따라 위치 변경 후 중복되지 않는 리스트 갯수 세기
     1&2 -> 1은 해당 위치에 1 부여, 2는 0 부여
@@ -17,14 +17,18 @@ def solution(n:int, orders: list[str]) -> int:
     train = [[0 for _ in range(SEAT_LENGTH)] for _ in range(n)]
 
     for order in orders:
-        order_lst = order.split()
-        ty_order, train_num = order_lst[0], int(order_lst[1])-1
-        if ty_order == "1" or ty_order == "2":
-            seat_num = int(order_lst[2])-1
-            train[train_num][seat_num] = 1 if ty_order == "1" else 0
-        elif ty_order == "3":
+        ty_order, train_num = order[0], order[1]-1
+        if ty_order == 1 or ty_order == 2:
+            seat_num = order[2]-1
+            train[train_num][seat_num] = 1 if ty_order == 1 else 0
+        elif ty_order == 3:
             train[train_num] = [0] + train[train_num][:SEAT_LENGTH-1]
-        elif ty_order == "4":
+        elif ty_order == 4:
             train[train_num] = train[train_num][1:SEAT_LENGTH] + [0]
-
     return len(set(tuple(x) for x in train))
+
+n, m = list(map(int,input().split()))
+orders = []
+for _ in range(m):
+    orders.append(list(map(int,input().split())))
+print(solution(n, orders))
