@@ -1,4 +1,4 @@
-#백준 테크노미노
+#백준 테크로미노
 def solution(n, m, board):
     global sum_max, paper
     sum_max = 0
