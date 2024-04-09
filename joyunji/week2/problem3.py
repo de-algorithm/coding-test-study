@@ -1,6 +1,6 @@
 from collections import deque
 import sys
-sys.stdin = open("yunji/input.txt", "r")
+# sys.stdin = open("yunji/input.txt", "r")
 input = sys.stdin 
 N, M, fuel = map(int, input.readline().split())
 maps = [ list(map(int,(input.readline().split()))) for _ in range(N)]
