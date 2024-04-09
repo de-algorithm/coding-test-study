@@ -1,11 +1,13 @@
 from collections import deque
 import sys
 # sys.stdin = open("yunji/input.txt", "r")
-input = sys.stdin 
-N, M, fuel = map(int, input.readline().split())
-maps = [ list(map(int,(input.readline().split()))) for _ in range(N)]
-driver_X, driver_Y = map(int, input.readline().split())
-passengers = [list(map(int,(input.readline().split()))) for _ in range(M)]
+
+# 백준 제출을 위한 입력  
+# input = sys.stdin 
+# N, M, fuel = map(int, input.readline().split())
+# maps = [ list(map(int,(input.readline().split()))) for _ in range(N)]
+# driver_X, driver_Y = map(int, input.readline().split())
+# passengers = [list(map(int,(input.readline().split()))) for _ in range(M)]
 
 # print(N, M, fuel)
 # print(maps)
@@ -87,4 +89,4 @@ def solution(N, M, fuel, maps, driver_X, driver_Y, passengers):
     return fuel
 
 
-print(solution(N, M, fuel, maps, driver_X, driver_Y, passengers))
+# print(solution(N, M, fuel, maps, driver_X, driver_Y, passengers))
