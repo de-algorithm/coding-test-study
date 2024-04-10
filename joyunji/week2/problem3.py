@@ -47,6 +47,20 @@ def bfs(N, maps, start_X, start_Y, dest_X, dest_Y):
     
 
 def solution(N, M, fuel, maps, driver_X, driver_Y, passengers):
+    """스타트 택시
+    https://www.acmicpc.net/problem/19238
+    Args:
+        N (int): 정사각형 지도의 크기 N (2 ≤ N ≤ 20)
+        M (int): M명의 승객 (1 ≤ M ≤ N^2)
+        fuel (int): 초기 연료의 양 (1 ≤ fuel ≤ 500,000))
+        maps (list[list[int]]): N X N 크기의 지도, 0은 빈칸, 1은 벽
+        driver_X (int): 백준이 운전을 시작하는 칸의 행 번호 (N 이하의 자연수)
+        driver_Y (int): 백준이 운전을 시작하는 칸의 열 번호 (N 이하의 자연수)
+        passengers (list[list[int]]): 각 승객의 출발지의 행과 열 번호, 목적지의 행과 열번호 
+
+    Returns:
+        int: 남은 연료의 양 
+    """
     # N개 줄 지도
     # M명의 승객 
     # 기사가 있는 곳에 가장 가까운 위치에 있는 승객까지의 최단 거리 a
