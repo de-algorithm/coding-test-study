@@ -25,17 +25,17 @@ def dfs(depth,total, A, N, plus, minus, multiply, divide):
     if divide:
         dfs(depth+1, int(total / A[depth]), A, N, plus, minus, multiply, divide-1)
         
-def solution(A, op_list):
+def solution(N, A, op_list):
     """
 
     Args:
-        A (list): 1 ≤ Ai ≤ 100를 만족하는 수열이다. 
-        op_list (list): 차례대로 덧셈의 개수, 뺄셈의 개수, 곱셈의 개수, 나눗셈의 개수이다. 
+        n (int) : 수열의 개수 N(2 ≤ N ≤ 11)
+        A (list[int]): 1 ≤ Ai ≤ 100를 만족하는 수열이다. 
+        op_list (list[int]): 차례대로 덧셈의 개수, 뺄셈의 개수, 곱셈의 개수, 나눗셈의 개수이다. 
 
     Returns:
-        list: [최댓값, 최솟값] 형태로 반환  
+        list([int, int]): [최댓값, 최솟값] 형태로 반환  
     """
-    N = len(A)  # 수의 개수 
     total = A[0]
     dfs(1, total, A, N, op_list[0], op_list[1], op_list[2], op_list[3])
     
